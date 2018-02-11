@@ -1,0 +1,54 @@
+extends layout
+
+block content
+        .container
+            .row
+                .col-xs-4
+                .col-xs-4
+                    ul.list-group.pre-scrollable(id="list-box")
+                            li.list-group-item txt1
+                .col-xs-4
+
+            .row
+                .col-xs-4
+                .col-xs-4
+                    input.form-control(type='text', id="input-box")
+                .col-xs-4
+                    button.btn.btn-primary(type='button', onclick='add_msg(),scroll_bottom()', id = "btn-send") Send
+
+
+
+
+        //keep scrollbar down
+        script.
+            var input = document.getElementById("input-box");
+
+
+
+            input.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("btn-send").click();
+                }
+            });
+        //socket listener
+        script.
+            var socket = io.connect('http://localhost:3000')
+            console.log("connesso");
+            socket.on('add', function (data) {
+                console.log("append: "+data.msg);
+                append_new_message(data.msg);
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+
