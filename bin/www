@@ -36,11 +36,11 @@ io.on('connection', function (socket) {
     //retrive and broadcast new message
     socket.on('new_msg', function (data) {
         socket.emit('add', { msg: data.msg });
+        socket.broadcast.emit('add', { msg: data.msg });
     });
 
     socket.on('disconnect', function() {
         count--;
-        io.emit('news', { msg: 'Someone went home', count: count })
     })
 });
 
