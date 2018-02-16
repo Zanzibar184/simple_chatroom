@@ -44,8 +44,8 @@ block content
             });
         //socket listener
         script.
-            //var socket = io.connect('https://simple-chatroom-1.herokuapp.com/')   // online
-            var socket = io.connect('127.0.0.1:3000')     //offline testing
+            var socket = io.connect('https://simple-chatroom-1.herokuapp.com/')   // online
+            //var socket = io.connect('127.0.0.1:3000')     //offline testing
             console.log("connesso");
             socket.on('add', function (data) {
                 append_new_message(data.msg, data.user);
