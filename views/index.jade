@@ -5,26 +5,26 @@ block content
         .container.chat
             .row
                 .col-xs-6
-                    input#username(type="text")
-                    button.btn.btn-success(onclick='set_username()') login
+                    input.form-control#username(type="text")
                 .col-xs-2
+                    button.btn.btn-success(onclick='set_username()') set username
                 .col-xs-4
-            .row.top
-                .col-xs-2
-                .col-xs-8
-                    ul.list-group.list-group-striped.pre-scrollable(id="list-box")
-                .col-xs-2
 
+        .container-fluid.top
+            ul.list-group.list-group.pre-scrollable#list-box
+
+        .container
             .row
                 .col-xs-2
                 .col-xs-8
                     input.form-control(type='text', id="input-box")
                 .col-xs-2
                     button.btn.btn-primary(type='button', onclick='add_msg(),scroll_bottom()', id = "btn-send") Send
-            .row(style="margin-bottom: 5px")
-                button.btn.btn-danger(type='button', onclick='clear_db()', id = "btn-clear") Clear history
-            .row
-                button.btn.btn-info(type='button', onclick='print_history()', id = "btn-print") print history
+            .row.top(style="margin-bottom: 5px")
+                .col-xs-3
+                .col-xs-6
+                    button.btn.btn-danger(type='button', onclick='clear_db(),clear_board()', id = "btn-clear") Clear history
+                .col-xs-3
 
 
 
@@ -44,8 +44,8 @@ block content
             });
         //socket listener
         script.
-            var socket = io.connect('https://simple-chatroom-1.herokuapp.com/')   // online
-            //var socket = io.connect('127.0.0.1:3000')     //offline testing
+            //var socket = io.connect('https://simple-chatroom-1.herokuapp.com/')   // online
+            var socket = io.connect('127.0.0.1:3000')     //offline testing
             console.log("connesso");
             socket.on('add', function (data) {
                 append_new_message(data.msg, data.user);

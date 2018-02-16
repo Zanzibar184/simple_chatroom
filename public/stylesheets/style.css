@@ -1,10 +1,15 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html{
+    width: 100%;
 }
 
-a {
-  color: #00B7FF;
+body {
+    width: 100%;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.container-fluid{
+    width: 100%;
 }
 
 .pre-scrollable{
@@ -12,15 +17,12 @@ a {
 }
 
 
-.border {
-    outline: 1px solid orange;
-
-}
-
 .top{
     margin-top: 50px;
 }
 
+
 li:nth-child(odd) {
     background: rgba(0, 0, 0, 0.06);
 }
+

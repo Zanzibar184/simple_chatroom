@@ -29,15 +29,6 @@ function set_username(){
 
 }
 
-function print_history(){
-    axios.get('/chat')
-        .then(function(messages) {
-            messages.data.forEach(function (msg) {
-                console.log(msg['user']+ ': ' + msg['text']);
-            });
-        });
-}
-
 function refresh_history(){
     axios.get('/chat')
         .then(function(messages) {
@@ -65,6 +56,9 @@ function append_new_message(text, user){
     li.setAttribute("class", "list-group-item");
     ul.appendChild(li);
 
+}
+function clear_board(){
+    document.getElementById("list-box").innerHTML= null;
 }
 
 

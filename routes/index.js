@@ -8,6 +8,7 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+
 app.get('/chat', function(req, res) {
      db.getHistory(res);
 });
