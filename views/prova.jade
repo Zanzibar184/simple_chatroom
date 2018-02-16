@@ -1,118 +1,29 @@
 doctype html
-html(lang='it')
+html
     head
-        title  About me
+        title Chatroom
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        // riferimenti per bootstrap
+
+        //bootstrap reference
         link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-        link(rel='stylesheet', href='https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css')
-        link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet')
-        link(href='https://fonts.googleapis.com/css?family=Righteous', rel='stylesheet')
+        script(src='https://unpkg.com/axios/dist/axios.min.js')
+        script(src='/socket.io/socket.io.js')
+
+        script(type='text/javascript', src='/javascripts/relation.js')
+        style.
+            .chat {
+                background-color: dimgrey;
+            }
+
     body
-        // intestazione
-        .container-fluid(style="background-color: hotpink")
-            .row
-                .col-sm-4
-                .col-sm-6.media
-                    .media-left
-                        img.img-circle.media-object(src='img\logo.jpeg', style='width:150px')
-                    .media-body
-                        h1.media-heading Gianluca Pessotto
-                        h4.media-body alias Zanzibar184
-                .col-sm-2
-        //
-        .container.bs-callout.bs-callout-grid1
-            h3
-                | About me
-                span.glyphicon.glyphicon-user
-            p
-                | I'm attending the third year of IT at the university of Trento. Actually i'm intrested on many branches of this sector, like web developing (front/back end), and the machine learning, in particular neural network.
-            p
-                | Mostly of my time i live in  Trento, but i was born and grown up in Gaiarine (TV). I'm looking for making experiences abroad preferably in North America/England/Australia/Belgium.
-        .container.bs-callout.bs-callout-grid2
-            h3
-                | Competence
-                span.glyphicon.glyphicon-lock
-            .row
-                .col-md-3
-                    p  I'm using/learning:
-                    ul
-                        li
-                            i.devicon-html5-plain-wordmark.colored
-                            |  HTML5
-                        li
-                            i.devicon-css3-plain-wordmark.colored
-                            |  CSS3
-                        li
-                            i.devicon-bootstrap-plain.colored
-                            |  Bootstrap
-                        li
-                            i.devicon-nodejs-plain.colored
-                            |  Node.js
-                        li
-                            i.devicon-mongodb-plain.colored
-                            |  MongoDB
-                        li
-                            i.devicon-heroku-plain.colored
-                            |  Heroku
-                        li
-                            i.devicon-javascript-plain.colored
-                            |  Javascript
-                .col-md-3
-                    ul
-                        h4
-                        li
-                            i.devicon-python-plain.colored
-                            |  Python
-                        li
-                            i.devicon-git-plain.colored
-                            |  Git
-                        li
-                            image(src='img\c_logo.png', style='width:15px')
-                                | C++
-                        li
-                            i.devicon-mysql-plain.colored
-                            |  Mysql
-                        li
-                            i.devicon-java-plain.colored
-                            |  Java
-                        li
-                            i.devicon-ubuntu-plain.colored
-                            |  Ubuntu
-        .container.bs-callout.bs-callout-grid1
-            h3
-                | What i'm searching for
-                span.glyphicon.glyphicon-zoom-in
-            p
-                | Currently i'm searching for an internship during the next few months (starting from Febr 2018), but my main goal is improving my skills in this sphere. If the working environment is pleasant, i will not refuse a full time job.
-            p
-                | I would really love to have the opportunity of working abroad in order to enhance my knowledge.
-        .container.bs-callout.bs-callout-grid2
-            h3
-                | Interests
-                span.glyphicon.glyphicon-screenshot
-            p
-                | Since my childhood i was interested in Computer Science, unfortunately i couldn't develop this passion until i transferred to Trento, where i learned lots of new stuffs.
-            p
-                | Even now throughout the development of this website i'm trying to improve myself, and i will publish my future works on my github page.
-        .container.bs-callout.bs-callout-grid1
-            h3
-                | Find me on
-                i.fa.fa-arrow-circle-down
-            .row
-                .col-xs-4.social-btn-holder(style='width: 90px')
-                    a.btn.btn-social.btn-block.btn-google(href='mailto:gianluca.pessotto96@gmail.com?subject=About')
-                        i.fa.fa-google
-                //
-                  - linkedin
-                  <div class="col-xs-3 social-btn-holder" style="width: 90px">
-                  <a href="#" class="btn btn-social btn-block btn-linkedin">
-                  <i class="fa fa-linkedin"></i> </a>
-                  </div>
-                .col-xs-4.social-btn-holder(style='width: 90px')
-                    a.btn.btn-social.btn-block.btn-github(href='https://github.com/Zanzibar184')
-                        i.fa.fa-github
+
+        .container-fluid.chat
+            p ciao
+
+
+
+
+

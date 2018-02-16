@@ -88,48 +88,7 @@ class Database {
             .catch((err) => {
                 console.log("Error: database.getHistory " + err);
             });
-
-
-/*
-        let database = null;
-
-        this.MongoClient.connect(this.url)
-            .then((db) => {
-            database = db;
-        const actual_db = database.db('chatroom')
-        return actual_db.collection('table');
-    })
-
-    .
-        then((table) = > {
-            return table.find();
-    }).
-        then((cursor) = > {
-            return cursor.toArray();
-    })
-    .
-        then((array) = > {
-            //console.log(array);
-            let results = [];
-        array.forEach((element) = > {
-            results.push({msg: element.msg, user: element.user});
-    })
-        ;
-        callback(results);
-    })
-    .
-        catch((err) = > {
-            console.log("Error: database.getHistory " + err);
-    })
-    .
-        then(() = > {
-            if(database) {
-                database.close();
-            }
-        }
-    )
-        ;
-    */}
+    }
 
 }
 

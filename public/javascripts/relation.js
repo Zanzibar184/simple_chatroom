@@ -26,6 +26,7 @@ function set_username(){
 
     username = document.getElementById("username").value;
     console.log("username: " + username);
+    document.getElementById("username").value=null;
 
 }
 

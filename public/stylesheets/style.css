@@ -1,16 +1,7 @@
-html{
-    width: 100%;
-}
-
 body {
-    width: 100%;
-    padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.container-fluid{
-    width: 100%;
-}
 
 .pre-scrollable{
     height: 150px
@@ -18,11 +9,10 @@ body {
 
 
 .top{
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 
 li:nth-child(odd) {
     background: rgba(0, 0, 0, 0.06);
 }
-

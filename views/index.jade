@@ -2,28 +2,33 @@ extends layout
 
 block content
 
-        .container.chat
+        .container.top
             .row
-                .col-xs-6
-                    input.form-control#username(type="text")
-                .col-xs-2
-                    button.btn.btn-success(onclick='set_username()') set username
-                .col-xs-4
+                .col-lg-2
+                .col-xs-6.col-lg-3
+                    input.form-control#username(type="text" autocomplete="off")
+                .col-xs-2.col-lg-2
+                    button.btn.btn-success#btn-username(onclick='set_username()') set username
+                .col-xs-4.col-lg-5
 
-        .container-fluid.top
-            ul.list-group.list-group.pre-scrollable#list-box
+        .container.top.chat
+            .row
+                .col-lg-2
+                .col-lg-8
+                    ul.list-group.list-group.pre-scrollable#list-box
+                .col-lg-2
 
         .container
             .row
-                .col-xs-2
-                .col-xs-8
+                .col-lg-2
+                .col-xs-8.col-lg-7
                     input.form-control(type='text', id="input-box")
-                .col-xs-2
-                    button.btn.btn-primary(type='button', onclick='add_msg(),scroll_bottom()', id = "btn-send") Send
+                .col-xs-4.col-lg-2
+                    button.btn.btn-primary#btn-send(type='button', onclick='add_msg(),scroll_bottom()') Send
             .row.top(style="margin-bottom: 5px")
                 .col-xs-3
                 .col-xs-6
-                    button.btn.btn-danger(type='button', onclick='clear_db(),clear_board()', id = "btn-clear") Clear history
+                    button.btn.btn-danger#btn-clear(type='button', onclick='clear_db(),clear_board()') Clear history
                 .col-xs-3
 
 
@@ -32,6 +37,16 @@ block content
         script.
             refresh_history()
 
+        //keep scrollbar down
+        script.
+            var input = document.getElementById("username");
+
+            input.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("btn-username").click();
+                }
+            });
         //keep scrollbar down
         script.
             var input = document.getElementById("input-box");
