@@ -1,28 +1,40 @@
 extends layout
 
 block content
-        .container
+
+        .container.chat
             .row
+                .col-xs-6
+                    input#username(type="text")
+                    button.btn.btn-success(onclick='set_username()') login
+                .col-xs-2
                 .col-xs-4
-                .col-xs-4
-                    ul.list-group.pre-scrollable(id="list-box")
-                .col-xs-4
+            .row.top
+                .col-xs-2
+                .col-xs-8
+                    ul.list-group.list-group-striped.pre-scrollable(id="list-box")
+                .col-xs-2
 
             .row
-                .col-xs-4
-                .col-xs-4
+                .col-xs-2
+                .col-xs-8
                     input.form-control(type='text', id="input-box")
-                .col-xs-4
+                .col-xs-2
                     button.btn.btn-primary(type='button', onclick='add_msg(),scroll_bottom()', id = "btn-send") Send
+            .row(style="margin-bottom: 5px")
+                button.btn.btn-danger(type='button', onclick='clear_db()', id = "btn-clear") Clear history
+            .row
+                button.btn.btn-info(type='button', onclick='print_history()', id = "btn-print") print history
 
 
 
+        //add old message from db
+        script.
+            refresh_history()
 
         //keep scrollbar down
         script.
             var input = document.getElementById("input-box");
-
-
 
             input.addEventListener("keyup", function (event) {
                 event.preventDefault();
@@ -32,11 +44,11 @@ block content
             });
         //socket listener
         script.
-            var socket = io.connect('https://simple-chatroom-1.herokuapp.com/')
+            var socket = io.connect('https://simple-chatroom-1.herokuapp.com/')   // online
+            //var socket = io.connect('127.0.0.1:3000')     //offline testing
             console.log("connesso");
             socket.on('add', function (data) {
-                console.log("append: "+data.msg);
-                append_new_message(data.msg);
+                append_new_message(data.msg, data.user);
                 scroll_bottom();
             })
 

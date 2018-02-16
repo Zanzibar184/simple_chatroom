@@ -1,4 +1,4 @@
-class Database{
+class Database {
 
     constructor() {
 
@@ -8,17 +8,17 @@ class Database{
         var mongodbDatabase = 'chatroom';          //table to use
 
         this.MongoClient = require('mongodb').MongoClient;
-        this.url = 'mongodb://'+authenticate+mongodbHost+':'+mongodbPort + '/' + mongodbDatabase;  //connection string
+        this.url = 'mongodb://' + authenticate + mongodbHost + ':' + mongodbPort + '/' + mongodbDatabase;  //connection string
     }
 
-    insertMessage(new_text) {       //save sended message to db
+    insertMessage(new_text, new_user) {       //save sended message to db
 
         this.MongoClient.connect(this.url, function (err, database) {
 
             const actual_db = database.db('chatroom')
             actual_db.collection('table', function (err, collection) {
 
-                collection.insert({text: new_text });
+                collection.insert({text: new_text, user: new_user});
 
                 actual_db.collection('table').count(function (err, count) {
 
@@ -52,7 +52,7 @@ class Database{
         });
     }
 
-    printContent(){     //function for maintenance, display on console all table content
+    printContent() {     //function for maintenance, display on console all table content
         this.MongoClient.connect(this.url, function (err, database) {
 
             const actual_db = database.db('chatroom')
@@ -62,14 +62,77 @@ class Database{
                     if (err) throw err;
                     docs.forEach(function (doc) {
                         console.log(   // 'id: ' + doc['id'] +
-                                        ' text: ' + doc['text']
-                                    );
+                            ' text: ' + doc['text']
+                        );
                     });
                 });
             });
         });
     }
+
+
+    getHistory(res) { //with promise
+
+        this.MongoClient.connect(this.url)
+            .then ((database) => {
+                const actual_db = database.db('chatroom');
+                return actual_db.collection('table')
+            })
+            .then ((table) => {
+                return table.find().toArray();
+            })
+            .then ((collection) => {
+                res.send(collection);
+            })
+
+            .catch((err) => {
+                console.log("Error: database.getHistory " + err);
+            });
+
+
+/*
+        let database = null;
+
+        this.MongoClient.connect(this.url)
+            .then((db) => {
+            database = db;
+        const actual_db = database.db('chatroom')
+        return actual_db.collection('table');
+    })
+
+    .
+        then((table) = > {
+            return table.find();
+    }).
+        then((cursor) = > {
+            return cursor.toArray();
+    })
+    .
+        then((array) = > {
+            //console.log(array);
+            let results = [];
+        array.forEach((element) = > {
+            results.push({msg: element.msg, user: element.user});
+    })
+        ;
+        callback(results);
+    })
+    .
+        catch((err) = > {
+            console.log("Error: database.getHistory " + err);
+    })
+    .
+        then(() = > {
+            if(database) {
+                database.close();
+            }
+        }
+    )
+        ;
+    */}
+
 }
+
 
 module.exports = Database;
 

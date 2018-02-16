@@ -23,20 +23,31 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
-/*
-*Open the socket
+/**
+ * Open the socket
  */
 
 var io = require('socket.io')(server);
 var count = 0;
 
 io.on('connection', function (socket) {
+
     count++;
     console.log("online: "+ count);
+
+
+    /* client info
+    var socketId = socket.id;
+    var clientIp = socket.request.connection.remoteAddress;
+    console.log(clientIp, "   ", socketId);
+    */
+
+
     //retrive and broadcast new message
     socket.on('new_msg', function (data) {
-        socket.emit('add', { msg: data.msg });
-        socket.broadcast.emit('add', { msg: data.msg });
+        console.log(data);
+        socket.emit('add', data);  //to sender
+        socket.broadcast.emit('add', data); //to others connected
     });
 
     socket.on('disconnect', function() {

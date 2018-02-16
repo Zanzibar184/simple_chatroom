@@ -10,3 +10,17 @@ a {
 .pre-scrollable{
     height: 150px
 }
+
+
+.border {
+    outline: 1px solid orange;
+
+}
+
+.top{
+    margin-top: 50px;
+}
+
+li:nth-child(odd) {
+    background: rgba(0, 0, 0, 0.06);
+}
